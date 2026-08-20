@@ -147,4 +147,94 @@
             cursor: pointer;
         }
         .btn:hover { background: #1a365d; }
-        .btn-accent { background: var(--
+        .btn-accent { background: var(--accent); }
+        .btn-accent:hover { background: #e53e3e; }
+        .btn-full { width: 100%; margin-top: auto; padding: 12px; font-size: 1rem;}
+
+        @media (max-width: 992px) {
+            .dashboard-container { grid-template-columns: 1fr; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            SYSTEM STATUS: ONLINE // BANI TECH SOLUTIONS // DEPLOYING CUSTOM ERP FOR NGOS, SCHOOLS, AND HOSPITALS // SECURED WITH ROW LEVEL SECURITY (RLS) // AUTOMATED LOGISTICS AND HR TRACKING // STOP FIGHTING SPREADSHEETS //
+        </div>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <img src="bani_logo.jpeg" alt="Bani Tech Solutions Logo" style="height: 3.5rem; width: auto; vertical-align: middle;">
+        </div>
+        <div>
+            <span style="font-weight: bold; margin-right: 15px;">SECURE ERP PLATFORM</span>
+            <a href="mailto:contact@example.com" class="btn btn-accent"><span class="flash-text">●</span> INITIATE CONSULTATION</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="panel">
+            <div class="panel-header">System Overview</div>
+            <h1>Enterprise Operations, Unified.</h1>
+            <p class="pitch-text">Built for complex organizational logistics. We architect systems with a deep understanding of financial compliance, institutional hierarchy, and data integrity.</p>
+            
+            <div style="background: #e2e8f0; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
+                <strong style="color: var(--primary);">AUTHORITY PROFILE</strong><br>
+                <span style="font-size: 0.85rem;">Engineered by operations and finance experts. We automate administrative bottlenecks so you can focus on execution.</span>
+            </div>
+
+            <div style="flex-grow: 1;"></div> <h3 class="flash-text" style="text-align: center; margin-bottom: 10px;">SYSTEM READY FOR DEPLOYMENT</h3>
+            <a href="#" class="btn btn-full">REQUEST ARCHITECTURE REVIEW</a>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">Technical Specifications</div>
+            <ul class="dense-list">
+                <li>
+                    <strong>Financial-Grade Security (RLS)</strong>
+                    Row Level Security ensures strict data access. Receipt overlap protection guarantees audit-ready, uncorrupted financial records.
+                </li>
+                <li>
+                    <strong>Geofenced HR Verification</strong>
+                    GPS-verified mobile tracking replaces manual attendance registers. Monitor field volunteers and staff in real-time.
+                </li>
+                <li>
+                    <strong>Multi-Tiered Logistics</strong>
+                    Unified database routing. Manage medical inventory, widow ration programs, or student records in a single administrative hub.
+                </li>
+                <li>
+                    <strong>Automated Data Optimization</strong>
+                    Server-side image compression speeds up load times. Custom landscape-reporting module formats raw data into official physical documents.
+                </li>
+            </ul>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">Live Demo Environments</div>
+            
+            <div class="demo-box">
+                <h4>TrustManager Pro (NGOs)</h4>
+                <p>Track recurring distributions (e.g., Rations) and protect donor drives with automated receipt validation.</p>
+                <a href="#" class="btn">ACCESS MODULE</a>
+            </div>
+
+            <div class="demo-box">
+                <h4 style="color: var(--accent);">Med-Ops Hub (Hospitals)</h4>
+                <p>Strict RLS for patient data. Geofenced tracking for maintenance staff and low-inventory alerts for consumables.</p>
+                <a href="#" class="btn btn-accent"><span class="flash-text">● LIVE</span> ACCESS MODULE</a>
+            </div>
+
+            <div class="demo-box">
+                <h4>Campus Admin Connect (Schools)</h4>
+                <p>Unify student photo databases with auto-compression. Generate printable report cards and fee receipts instantly.</p>
+                <a href="#" class="btn">ACCESS MODULE</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
