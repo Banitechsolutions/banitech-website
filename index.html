@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bani Tech Solutions | ERP Software Consultation</title>
+    <title>Bani Tech Solutions | Custom Enterprise Operations Software</title>
     <style>
         :root {
             --primary: #0a2540;
             --secondary: #00d4ff;
             --accent: #ff6b6b;
-            --bg-light: #f4f7f9;
-            --text-dark: #2d3748;
+            --bg-light: #f6f9fc;
+            --text-dark: #32325d;
+            --text-muted: #525f7f;
+            --white: #ffffff;
             --border: #e2e8f0;
         }
 
@@ -18,58 +20,28 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
-            overflow-x: hidden;
-            font-size: 14px;
+            line-height: 1.6;
         }
 
-        /* --- Running Text (Ticker Tape) --- */
-        .ticker-wrap {
-            background: var(--primary);
-            color: var(--secondary);
-            padding: 4px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            border-bottom: 2px solid var(--accent);
-            font-family: monospace;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        .ticker {
-            display: inline-block;
-            padding-left: 100%;
-            animation: ticker-anim 25s linear infinite;
-        }
-        @keyframes ticker-anim {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
-        }
-
-        /* --- Flashing Text --- */
-        .flash-text {
-            animation: blinker 1.2s linear infinite;
-            color: var(--accent);
-            font-weight: 900;
-        }
-        @keyframes blinker {
-            50% { opacity: 0; }
-        }
-
-        /* --- Navigation --- */
+        /* Navigation */
         nav {
-            background: #fff;
-            padding: 10px 20px;
+            background: var(--white);
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        
+
         .brand-container {
             display: flex;
             align-items: center;
@@ -77,111 +49,279 @@
         }
 
         .brand-container img {
-            height: 40px;
+            height: 45px;
             width: auto;
             object-fit: contain;
         }
 
         .brand-title {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--primary);
             letter-spacing: -0.5px;
             text-transform: uppercase;
         }
 
-        /* --- Dense Single-Page Grid (Form on Right) --- */
-        .dashboard-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1.2fr;
-            gap: 15px;
-            padding: 15px;
-            max-width: 1600px;
-            margin: 0 auto;
-            height: calc(100vh - 85px);
-        }
-
-        .panel {
-            background: #fff;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        .nav-links {
             display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            gap: 2rem;
+            align-items: center;
         }
 
-        .panel-header {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--bg-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- Form Specific Styles --- */
-        .form-panel {
-            border-top: 4px solid var(--accent);
-            background: #fafbfc;
-        }
-        
-        .form-group { margin-bottom: 10px; }
-        .form-group label { 
-            display: block; 
-            margin-bottom: 3px; 
-            font-weight: bold; 
-            color: var(--primary); 
-            font-size: 0.8rem;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; 
-            padding: 7px 10px; 
-            border: 1px solid var(--border); 
-            border-radius: 4px; 
-            font-size: 0.85rem;
-            background: #fff;
-        }
-        
-        /* --- Typography & Lists --- */
-        h1 { font-size: 1.6rem; line-height: 1.1; margin-bottom: 10px; color: var(--primary); }
-        .pitch-text { font-size: 0.9rem; line-height: 1.4; color: #4a5568; margin-bottom: 15px; }
-        
-        ul.dense-list { list-style: none; }
-        ul.dense-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--bg-light);
-            font-size: 0.85rem;
-        }
-        ul.dense-list li strong { color: var(--primary); display: block; font-size: 0.95rem; }
-
-        /* --- Buttons & Feedback --- */
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: #fff;
-            padding: 6px 12px;
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            text-align: center;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
             border: none;
             cursor: pointer;
-            transition: background 0.3s;
         }
-        .btn:hover { background: #1a365d; }
-        .btn-accent { background: var(--accent); }
-        .btn-accent:hover { background: #e53e3e; }
-        .btn-full { width: 100%; margin-top: auto; padding: 10px; font-size: 0.95rem;}
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Section with Form */
+        .hero {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a365d 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            color: #e2e8f0;
+            max-width: 600px;
+        }
+
+        .hero-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            flex: 0 1 400px;
+            color: var(--text-dark);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-top: 4px solid var(--accent);
+        }
+
+        .hero-form h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .form-group { margin-bottom: 12px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background: #fff;
+        }
+
+        .hero-form .btn {
+            width: 100%;
+            background: var(--accent);
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+        .hero-form .btn:hover { background: #e53e3e; }
+
+        /* Authority Section */
+        .authority {
+            padding: 5rem 5%;
+            text-align: center;
+            background: var(--white);
+        }
+        
+        .authority h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .authority p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 5rem 5%;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+        }
+
+        /* Demo Section */
+        .demos {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .demo-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .demo-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 3rem;
+        }
+
+        .demo-content h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .demo-content .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-content ul {
+            list-style-position: inside;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+        
+        .demo-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-image {
+            flex: 1;
+            min-width: 300px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            border-left: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .demo-image::after {
+            content: 'Dashboard Interface Preview';
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 5%;
+        }
 
         #form-status {
             display: none;
             padding: 8px;
-            margin-top: 8px;
+            margin-top: 10px;
             border-radius: 4px;
             text-align: center;
             font-weight: bold;
@@ -190,79 +330,44 @@
         .status-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-loading { background: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
 
-        @media (max-width: 992px) {
-            .dashboard-container { grid-template-columns: 1fr; height: auto; }
-            .brand-title { font-size: 1rem; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .demo-card { flex-direction: column; }
+            .demo-image { border-left: none; border-top: 1px solid rgba(0,0,0,0.05); }
         }
     </style>
 </head>
 <body>
-
-    <div class="ticker-wrap">
-        <div class="ticker">
-            SYSTEM STATUS: ONLINE // BANI TECH SOLUTIONS // DEPLOYING CUSTOM ERP FOR MANUFACTURING, NGOS, SCHOOLS, AND HOSPITALS // SECURED WITH ROW LEVEL SECURITY (RLS) // BOOK YOUR FREE CONSULTATION TODAY //
-        </div>
-    </div>
 
     <nav>
         <div class="brand-container">
             <img src="bani_logo.jpeg" alt="Bani Tech Solutions Logo">
             <span class="brand-title">Bani Tech Solutions</span>
         </div>
-        <div>
-            <a href="#quote" class="btn btn-accent"><span class="flash-text">●</span> GET A QUOTE</a>
+        <div class="nav-links">
+            <a href="#features">Platform Features</a>
+            <a href="#solutions">Industry Solutions</a>
+            <a href="#contact-form" class="btn">Request Consultation</a>
         </div>
     </nav>
 
-    <div class="dashboard-container">
-        
-        <!-- PANEL 1: PITCH & BENEFITS -->
-        <div class="panel">
-            <div class="panel-header">System Overview</div>
-            <h1>Run Operations With Clarity, Not Chaos.</h1>
-            <p class="pitch-text">Fully customizable Cloud ERP Software designed to manage complex manufacturing, logistics, and organizational workflows in one centralized platform[cite: 2].</p>
-            
-            <div style="background: #e2e8f0; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-                <strong style="color: var(--primary);">UNIQUE BENEFITS</strong><br>
-                <span style="font-size: 0.8rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly[cite: 2].</span>
+    <!-- Hero Section with Form -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Stop Fighting Spreadsheets.<br>Start Running Your Operations.</h1>
+            <p>Enterprise-grade Custom ERPs and MIS platforms built specifically for the complex logistics of NGOs, Schools, and Healthcare facilities[cite: 1].</p>
+            <div class="hero-btns" style="justify-content: flex-start;">
+                <a href="#solutions" class="btn" style="background: var(--secondary); color: var(--primary);">View Live Demos</a>
             </div>
-
-            <ul class="dense-list">
-                <li><strong>Enterprise-Grade Security</strong> Built with Row Level Security (RLS) to protect institutional privacy[cite: 2].</li>
-                <li><strong>Hardware Integrations</strong> Seamlessly connect with real-world logistics tools[cite: 2].</li>
-                <li><strong>Cost-Effective Deployment</strong> Pay only for the exact modules your business requires[cite: 2].</li>
-            </ul>
         </div>
 
-        <!-- PANEL 2: CORE MODULES (Middle) -->
-        <div class="panel">
-            <div class="panel-header">Major System Components</div>
-            <ul class="dense-list">
-                <li>
-                    <strong>Customer Relationship (CRM)</strong>
-                    Track inquiries, automate follow-ups, and manage retention entirely from your central dashboard[cite: 2].
-                </li>
-                <li>
-                    <strong>Human Resource (HRMS)</strong>
-                    Advanced HR tracking including GPS-based geofencing for shift attendance[cite: 2].
-                </li>
-                <li>
-                    <strong>Accounts & Finance</strong>
-                    Receipt overlap-protection to guarantee uncorrupted financial records[cite: 2].
-                </li>
-                <li>
-                    <strong>Inventory Management</strong>
-                    Real-time stock alerts, batch tracking, and expiration control[cite: 2].
-                </li>
-            </ul>
-        </div>
-
-        <!-- PANEL 3: LEAD GEN FORM (Right-Aligned) -->
-        <div class="panel form-panel" id="quote">
-            <div class="panel-header" style="text-align: center; font-size: 1.1rem;">Get Free ERP Consultation</div>
-            <p style="text-align: center; margin-bottom: 10px; font-size: 0.8rem; color: #525f7f;">Queries route directly to <strong>bani.parvinder@gmail.com</strong></p>
+        <!-- Lead Generation Form -->
+        <div class="hero-form" id="contact-form">
+            <h3>Get Free ERP Consultation</h3>
+            <p style="text-align: center; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted);">Queries route directly to <strong>bani.parvinder@gmail.com</strong></p>
             
-            <form id="consultation-form" style="display: flex; flex-direction: column; height: 100%;">
+            <form id="consultation-form">
                 <div class="form-group">
                     <label>Full Name*</label>
                     <input type="text" name="Name" placeholder="e.g. John Doe" required>
@@ -290,12 +395,94 @@
                     <textarea name="Query" rows="2" placeholder="Briefly describe requirements..."></textarea>
                 </div>
                 
-                <button type="submit" id="submit-btn" class="btn btn-accent btn-full"><span class="flash-text">●</span> SUBMIT INQUIRY</button>
+                <button type="submit" id="submit-btn" class="btn">Submit Details</button>
                 <div id="form-status"></div>
             </form>
         </div>
+    </header>
 
-    </div>
+    <section class="authority">
+        <h2>Built for Logistics. Secured like a Bank.</h2>
+        <p>Most software is built by coders who don't understand how an organization actually runs. With a deep background in operational management and finance, these systems are architected with an understanding of compliance, institutional hierarchy, and real-world logistics. We don't just store data; we protect it, validate it, and automate your administrative bottlenecks[cite: 1].</p>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Enterprise Features, Out of the Box</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Financial-Grade Security (RLS)</h3>
+                <p>Built with Row Level Security to ensure staff only see authorized data. Overlap protection guarantees financial records (like receipt books) remain uncorrupted and audit-ready[cite: 1].</p>
+            </div>
+            <div class="card">
+                <h3>Geofenced HR & Attendance</h3>
+                <p>Replace manual registers with GPS-verified mobile attendance tracking. Know exactly when and where your staff and field volunteers log their shifts[cite: 1].</p>
+            </div>
+            <div class="card">
+                <h3>Multi-Tiered Logistics</h3>
+                <p>Manage complex distributions. Whether tracking medical inventory, student records, or specific beneficiary ration programs, everything lives in one centralized hub[cite: 1].</p>
+            </div>
+            <div class="card">
+                <h3>Optimized Reporting</h3>
+                <p>Automated image compression saves database space, while custom, landscape-formatted printable reports ensure physical records meet auditing standards[cite: 1].</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="demos">
+        <h2 class="section-title">Pre-Built Industry Solutions</h2>
+        
+        <div class="demo-card">
+            <div class="demo-content">
+                <span class="badge">For NGOs & Charities</span>
+                <h3>TrustManager Pro</h3>
+                <p>Show donors exactly where their money goes while automating beneficiary tracking across multiple field programs[cite: 1].</p>
+                <ul>
+                    <li>Track recurring distributions (e.g., Widow Rations)[cite: 1]</li>
+                    <li>Overlapping receipt protection for donation drives[cite: 1]</li>
+                    <li>Real-time inflow and outflow dashboard[cite: 1]</li>
+                </ul>
+                <a href="#contact-form" class="btn">Launch Demo Environment</a>
+            </div>
+            <div class="demo-image"></div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <span class="badge">For Clinics & Hospitals</span>
+                <h3>Med-Ops Hub</h3>
+                <p>Secure patient data and track critical consumable inventory without bloated enterprise hospital software costs[cite: 1].</p>
+                <ul>
+                    <li>Strict RLS (Role-based access for Doctors vs Admin)[cite: 1]</li>
+                    <li>Consumable inventory alerts[cite: 1]</li>
+                    <li>Geofenced tracking for maintenance/ward staff[cite: 1]</li>
+                </ul>
+                <a href="#contact-form" class="btn">Launch Demo Environment</a>
+            </div>
+            <div class="demo-image"></div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <span class="badge">For Schools & Institutes</span>
+                <h3>Campus Admin Connect</h3>
+                <p>Unify student records, fee collection, and teacher attendance in one highly secure, custom-branded portal[cite: 1].</p>
+                <ul>
+                    <li>Landscape printable report cards and fee receipts[cite: 1]</li>
+                    <li>Automated student photo compression[cite: 1]</li>
+                    <li>Daily student/teacher attendance percentages[cite: 1]</li>
+                </ul>
+                <a href="#contact-form" class="btn">Launch Demo Environment</a>
+            </div>
+            <div class="demo-image"></div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Ready to upgrade your operations?</h2>
+        <p style="margin: 1rem 0 2rem;">Let's discuss how a custom ERP can automate your specific bottlenecks[cite: 1].</p>
+        <a href="#contact-form" class="btn" style="background: var(--white); color: var(--primary);">Contact for Consultation</a>
+        <p style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.7;">© 2026 Bani Tech Solutions. Built for secure operations.</p>
+    </footer>
 
     <!-- Background Form Handler script -->
     <script>
