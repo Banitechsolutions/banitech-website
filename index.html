@@ -223,12 +223,18 @@
             </ul>
         </div>
 
-        <!-- PANEL 2: ADWORDS LEAD GEN FORM -->
+        <!-- PANEL 2: LEAD GEN FORM WITH BACKEND ROUTING -->
         <div class="panel form-panel" id="quote">
             <div class="panel-header" style="text-align: center; font-size: 1.3rem;">Get Free ERP Consultation</div>
             <p style="text-align: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted);">Fill out your details below. Queries route directly to <br><strong>bani.parvinder@gmail.com</strong>.</p>
             
-            <form action="mailto:bani.parvinder@gmail.com" method="POST" enctype="text/plain" style="display: flex; flex-direction: column; height: 100%;">
+            <!-- FormSubmit backend action integration -->
+            <form action="https://formsubmit.co/bani.parvinder@gmail.com" method="POST" style="display: flex; flex-direction: column; height: 100%;">
+                
+                <!-- Configuration inputs for FormSubmit -->
+                <input type="hidden" name="_subject" value="New ERP Consultation Inquiry - Bani Tech Solutions">
+                <input type="hidden" name="_captcha" value="false">
+                
                 <div class="form-group">
                     <label>Full Name*</label>
                     <input type="text" name="Name" placeholder="e.g. John Doe" required>
