@@ -12,7 +12,6 @@
             --bg-light: #f4f7f9;
             --text-dark: #2d3748;
             --border: #e2e8f0;
-            --success: #28a745;
         }
 
         * {
@@ -91,10 +90,10 @@
             text-transform: uppercase;
         }
 
-        /* --- Dense Single-Page Grid --- */
+        /* --- Dense Single-Page Grid (Form on Right) --- */
         .dashboard-container {
             display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
+            grid-template-columns: 1fr 1fr 1.2fr;
             gap: 15px;
             padding: 15px;
             max-width: 1600px;
@@ -124,39 +123,40 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Form Panel Styles --- */
+        /* --- Form Specific Styles --- */
         .form-panel {
             border-top: 4px solid var(--accent);
             background: #fafbfc;
         }
         
-        .form-group { margin-bottom: 12px; }
+        .form-group { margin-bottom: 10px; }
         .form-group label { 
             display: block; 
-            margin-bottom: 4px; 
+            margin-bottom: 3px; 
             font-weight: bold; 
             color: var(--primary); 
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%; 
-            padding: 8px 10px; 
+            padding: 7px 10px; 
             border: 1px solid var(--border); 
             border-radius: 4px; 
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             background: #fff;
         }
         
-        h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 10px; color: var(--primary); }
-        .pitch-text { font-size: 0.95rem; line-height: 1.4; color: #4a5568; margin-bottom: 15px; }
+        /* --- Typography & Lists --- */
+        h1 { font-size: 1.6rem; line-height: 1.1; margin-bottom: 10px; color: var(--primary); }
+        .pitch-text { font-size: 0.9rem; line-height: 1.4; color: #4a5568; margin-bottom: 15px; }
         
         ul.dense-list { list-style: none; }
         ul.dense-list li {
             padding: 8px 0;
             border-bottom: 1px solid var(--bg-light);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
-        ul.dense-list li strong { color: var(--primary); display: block; font-size: 1rem; }
+        ul.dense-list li strong { color: var(--primary); display: block; font-size: 0.95rem; }
 
         /* --- Buttons & Feedback --- */
         .btn {
@@ -176,16 +176,16 @@
         .btn:hover { background: #1a365d; }
         .btn-accent { background: var(--accent); }
         .btn-accent:hover { background: #e53e3e; }
-        .btn-full { width: 100%; margin-top: auto; padding: 12px; font-size: 1rem;}
+        .btn-full { width: 100%; margin-top: auto; padding: 10px; font-size: 0.95rem;}
 
         #form-status {
             display: none;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 8px;
+            margin-top: 8px;
             border-radius: 4px;
             text-align: center;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         .status-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .status-loading { background: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
@@ -193,7 +193,6 @@
         @media (max-width: 992px) {
             .dashboard-container { grid-template-columns: 1fr; height: auto; }
             .brand-title { font-size: 1rem; }
-            .form-panel { order: -1; }
         }
     </style>
 </head>
@@ -225,7 +224,7 @@
             
             <div style="background: #e2e8f0; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
                 <strong style="color: var(--primary);">UNIQUE BENEFITS</strong><br>
-                <span style="font-size: 0.85rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly[cite: 2].</span>
+                <span style="font-size: 0.8rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly[cite: 2].</span>
             </div>
 
             <ul class="dense-list">
@@ -235,10 +234,33 @@
             </ul>
         </div>
 
-        <!-- PANEL 2: BACKGROUND LEAD GEN FORM -->
+        <!-- PANEL 2: CORE MODULES (Middle) -->
+        <div class="panel">
+            <div class="panel-header">Major System Components</div>
+            <ul class="dense-list">
+                <li>
+                    <strong>Customer Relationship (CRM)</strong>
+                    Track inquiries, automate follow-ups, and manage retention entirely from your central dashboard[cite: 2].
+                </li>
+                <li>
+                    <strong>Human Resource (HRMS)</strong>
+                    Advanced HR tracking including GPS-based geofencing for shift attendance[cite: 2].
+                </li>
+                <li>
+                    <strong>Accounts & Finance</strong>
+                    Receipt overlap-protection to guarantee uncorrupted financial records[cite: 2].
+                </li>
+                <li>
+                    <strong>Inventory Management</strong>
+                    Real-time stock alerts, batch tracking, and expiration control[cite: 2].
+                </li>
+            </ul>
+        </div>
+
+        <!-- PANEL 3: LEAD GEN FORM (Right-Aligned) -->
         <div class="panel form-panel" id="quote">
-            <div class="panel-header" style="text-align: center; font-size: 1.3rem;">Get Free ERP Consultation</div>
-            <p style="text-align: center; margin-bottom: 15px; font-size: 0.85rem; color: #525f7f;">Fill out your details below. Queries route directly to our team.</p>
+            <div class="panel-header" style="text-align: center; font-size: 1.1rem;">Get Free ERP Consultation</div>
+            <p style="text-align: center; margin-bottom: 10px; font-size: 0.8rem; color: #525f7f;">Queries route directly to <strong>bani.parvinder@gmail.com</strong></p>
             
             <form id="consultation-form" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="form-group">
@@ -265,40 +287,17 @@
                 </div>
                 <div class="form-group">
                     <label>Query / Requirements</label>
-                    <textarea name="Query" rows="2" placeholder="Briefly describe your requirements..."></textarea>
+                    <textarea name="Query" rows="2" placeholder="Briefly describe requirements..."></textarea>
                 </div>
                 
-                <button type="submit" id="submit-btn" class="btn btn-accent btn-full" style="margin-top: 5px;"><span class="flash-text">●</span> SUBMIT INQUIRY</button>
+                <button type="submit" id="submit-btn" class="btn btn-accent btn-full"><span class="flash-text">●</span> SUBMIT INQUIRY</button>
                 <div id="form-status"></div>
             </form>
         </div>
 
-        <!-- PANEL 3: CORE MODULES -->
-        <div class="panel">
-            <div class="panel-header">Major System Components</div>
-            <ul class="dense-list">
-                <li>
-                    <strong>Customer Relationship (CRM)</strong>
-                    Track inquiries, automate follow-ups, and manage retention entirely from your central dashboard[cite: 2].
-                </li>
-                <li>
-                    <strong>Human Resource (HRMS)</strong>
-                    Advanced HR tracking including GPS-based geofencing for shift attendance[cite: 2].
-                </li>
-                <li>
-                    <strong>Accounts & Finance</strong>
-                    Receipt overlap-protection to guarantee uncorrupted financial records[cite: 2].
-                </li>
-                <li>
-                    <strong>Inventory Management</strong>
-                    Real-time stock alerts, batch tracking, and expiration control[cite: 2].
-                </li>
-            </ul>
-        </div>
-
     </div>
 
-    <!-- Background Submission Handler (No Mail App Popup) -->
+    <!-- Background Form Handler script -->
     <script>
         const form = document.getElementById('consultation-form');
         const statusDiv = document.getElementById('form-status');
