@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bani Tech Solutions | Enterprise Operations Software</title>
+    <title>Bani Tech Solutions | ERP Software Consultation</title>
     <style>
         :root {
             --primary: #0a2540;
@@ -93,7 +93,7 @@
         /* --- Dense Single-Page Grid --- */
         .dashboard-container {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr 1fr;
             gap: 15px;
             padding: 15px;
             max-width: 1600px;
@@ -123,11 +123,33 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Panel 1: Core Pitch --- */
+        /* --- Form Specific Styles --- */
+        .form-panel {
+            border-top: 4px solid var(--accent);
+            background: #fafbfc;
+        }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+            color: var(--primary); 
+            font-size: 0.85rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid var(--border); 
+            border-radius: 4px; 
+            font-size: 0.9rem;
+            background: #fff;
+        }
+        
+        /* --- Typography & Lists --- */
         h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 10px; color: var(--primary); }
         .pitch-text { font-size: 0.95rem; line-height: 1.4; color: #4a5568; margin-bottom: 15px; }
         
-        /* --- Panel 2: Features List --- */
         ul.dense-list { list-style: none; }
         ul.dense-list li {
             padding: 8px 0;
@@ -135,17 +157,6 @@
             font-size: 0.9rem;
         }
         ul.dense-list li strong { color: var(--primary); display: block; font-size: 1rem; }
-
-        /* --- Panel 3: Demos --- */
-        .demo-box {
-            background: var(--bg-light);
-            border-left: 4px solid var(--secondary);
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 0 4px 4px 0;
-        }
-        .demo-box h4 { margin-bottom: 4px; color: var(--primary); }
-        .demo-box p { font-size: 0.85rem; color: #4a5568; margin-bottom: 8px; }
 
         /* --- Buttons --- */
         .btn {
@@ -160,6 +171,7 @@
             text-align: center;
             border: none;
             cursor: pointer;
+            transition: background 0.3s;
         }
         .btn:hover { background: #1a365d; }
         .btn-accent { background: var(--accent); }
@@ -169,6 +181,7 @@
         @media (max-width: 992px) {
             .dashboard-container { grid-template-columns: 1fr; height: auto; }
             .brand-title { font-size: 1rem; }
+            .form-panel { order: -1; }
         }
     </style>
 </head>
@@ -176,7 +189,7 @@
 
     <div class="ticker-wrap">
         <div class="ticker">
-            SYSTEM STATUS: ONLINE // BANI TECH SOLUTIONS // ACCELERATE YOUR GROWTH WITH SMART PRICING TECHNOLOGY // SECURED WITH ROW LEVEL SECURITY (RLS) // AUTOMATED LOGISTICS AND HR TRACKING //
+            SYSTEM STATUS: ONLINE // BANI TECH SOLUTIONS // DEPLOYING CUSTOM ERP FOR MANUFACTURING, NGOS, SCHOOLS, AND HOSPITALS // SECURED WITH ROW LEVEL SECURITY (RLS) // BOOK YOUR FREE CONSULTATION TODAY //
         </div>
     </div>
 
@@ -186,71 +199,87 @@
             <span class="brand-title">Bani Tech Solutions</span>
         </div>
         <div>
-            <span style="font-weight: bold; margin-right: 15px; font-size: 0.9rem;">SECURE ERP PLATFORM</span>
-            <a href="mailto:contact@example.com" class="btn btn-accent"><span class="flash-text">●</span> INITIATE CONSULTATION</a>
+            <span style="font-weight: bold; margin-right: 15px; font-size: 0.9rem;">CALL: +91-9818825303</span>
+            <a href="#quote" class="btn btn-accent"><span class="flash-text">●</span> GET A QUOTE</a>
         </div>
     </nav>
 
     <div class="dashboard-container">
         
+        <!-- PANEL 1: PITCH & BENEFITS -->
         <div class="panel">
             <div class="panel-header">System Overview</div>
-            <h1>Enterprise Operations, Unified.</h1>
-            <p class="pitch-text">Built for complex organizational logistics. We architect systems with a deep understanding of financial compliance, institutional hierarchy, and data integrity.</p>
+            <h1>Run Operations With Clarity, Not Chaos.</h1>
+            <p class="pitch-text">Fully customizable Cloud ERP Software designed to manage complex manufacturing, logistics, and organizational workflows in one centralized platform.</p>
             
             <div style="background: #e2e8f0; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-                <strong style="color: var(--primary);">AUTHORITY PROFILE</strong><br>
-                <span style="font-size: 0.85rem;">Engineered by operations and finance experts. We automate administrative bottlenecks so you can focus on execution.</span>
+                <strong style="color: var(--primary);">UNIQUE BENEFITS</strong><br>
+                <span style="font-size: 0.85rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly. We adapt to your business, not the other way around.</span>
             </div>
 
-            <div style="flex-grow: 1;"></div>
-            
-            <h3 class="flash-text" style="text-align: center; margin-bottom: 10px;">SYSTEM READY FOR DEPLOYMENT</h3>
-            <a href="#" class="btn btn-full">REQUEST ARCHITECTURE REVIEW</a>
-        </div>
-
-        <div class="panel">
-            <div class="panel-header">Technical Specifications</div>
             <ul class="dense-list">
-                <li>
-                    <strong>Financial-Grade Security (RLS)</strong>
-                    Row Level Security ensures strict data access. Receipt overlap protection guarantees audit-ready, uncorrupted financial records.
-                </li>
-                <li>
-                    <strong>Geofenced HR Verification</strong>
-                    GPS-verified mobile tracking replaces manual attendance registers. Monitor field volunteers and staff in real-time.
-                </li>
-                <li>
-                    <strong>Multi-Tiered Logistics</strong>
-                    Unified database routing. Manage medical inventory, widow ration programs, or student records in a single administrative hub.
-                </li>
-                <li>
-                    <strong>Automated Data Optimization</strong>
-                    Server-side image compression speeds up load times. Custom landscape-reporting module formats raw data into official physical documents.
-                </li>
+                <li><strong>Enterprise-Grade Security</strong> Built with Row Level Security (RLS) to protect institutional privacy[cite: 2].</li>
+                <li><strong>Hardware Integrations</strong> Seamlessly connect with real-world logistics tools[cite: 2].</li>
+                <li><strong>Cost-Effective Deployment</strong> Pay only for the exact modules your business requires[cite: 2].</li>
             </ul>
         </div>
 
-        <div class="panel">
-            <div class="panel-header">Live Demo Environments</div>
+        <!-- PANEL 2: ADWORDS LEAD GEN FORM -->
+        <div class="panel form-panel" id="quote">
+            <div class="panel-header" style="text-align: center; font-size: 1.3rem;">Get Free ERP Consultation</div>
+            <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">Fill out your details below. Our implementation experts will contact you within 24 hours[cite: 2].</p>
             
-            <div class="demo-box">
-                <h4>TrustManager Pro (NGOs)</h4>
-                <p>Track recurring distributions (e.g., Rations) and protect donor drives with automated receipt validation.</p>
-                <a href="#" class="btn">ACCESS MODULE</a>
-            </div>
+            <form action="#" method="POST" style="display: flex; flex-direction: column; height: 100%;">
+                <div class="form-group">
+                    <label>Full Name*</label>
+                    <input type="text" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Business Email*</label>
+                    <input type="email" placeholder="john@yourcompany.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number*</label>
+                    <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>Select Industry*</label>
+                    <select required>
+                        <option value="">Choose an option...</option>
+                        <option value="Manufacturing">Manufacturing & Supply Chain</option>
+                        <option value="Healthcare">Healthcare / Clinics</option>
+                        <option value="Education">Education / Institutions</option>
+                        <option value="NGO">NGOs / Charities</option>
+                    </select>
+                </div>
+                
+                <div style="flex-grow: 1;"></div>
+                
+                <button type="submit" class="btn btn-accent btn-full"><span class="flash-text">●</span> SUBMIT DETAILS</button>
+            </form>
+        </div>
 
-            <div class="demo-box">
-                <h4 style="color: var(--accent);">Med-Ops Hub (Hospitals)</h4>
-                <p>Strict RLS for patient data. Geofenced tracking for maintenance staff and low-inventory alerts for consumables.</p>
-                <a href="#" class="btn btn-accent"><span class="flash-text">● LIVE</span> ACCESS MODULE</a>
-            </div>
-
-            <div class="demo-box">
-                <h4>Campus Admin Connect (Schools)</h4>
-                <p>Unify student photo databases with auto-compression. Generate printable report cards and fee receipts instantly.</p>
-                <a href="#" class="btn">ACCESS MODULE</a>
-            </div>
+        <!-- PANEL 3: CORE MODULES -->
+        <div class="panel">
+            <div class="panel-header">Major System Components</div>
+            <ul class="dense-list">
+                <li>
+                    <strong>Customer Relationship (CRM)</strong>
+                    Build and improve relations. Track inquiries, automate follow-ups, and manage retention entirely from your central dashboard[cite: 2].
+                </li>
+                <li>
+                    <strong>Human Resource (HRMS)</strong>
+                    Advanced HR tracking including GPS-based geofencing for shift attendance. Eliminate manual registers and verify staff automatically[cite: 2].
+                </li>
+                <li>
+                    <strong>Accounts & Finance</strong>
+                    Manage critical financial transactions securely. Built with overlap-protection for receipts, ensuring your ledgers remain totally uncorrupted[cite: 2].
+                </li>
+                <li>
+                    <strong>Inventory Management</strong>
+                    Supervise inventory levels in real-time. Set low-stock alerts, track batch numbers, manage expiration dates, and eliminate overstocking[cite: 2].
+                </li>
+            </ul>
         </div>
 
     </div>
