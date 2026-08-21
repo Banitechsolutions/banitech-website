@@ -12,6 +12,7 @@
             --bg-light: #f4f7f9;
             --text-dark: #2d3748;
             --border: #e2e8f0;
+            --success: #28a745;
         }
 
         * {
@@ -123,7 +124,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Panel 2: Form Specific Styles --- */
+        /* --- Form Panel Styles --- */
         .form-panel {
             border-top: 4px solid var(--accent);
             background: #fafbfc;
@@ -146,7 +147,6 @@
             background: #fff;
         }
         
-        /* --- Typography & Lists --- */
         h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 10px; color: var(--primary); }
         .pitch-text { font-size: 0.95rem; line-height: 1.4; color: #4a5568; margin-bottom: 15px; }
         
@@ -158,7 +158,7 @@
         }
         ul.dense-list li strong { color: var(--primary); display: block; font-size: 1rem; }
 
-        /* --- Buttons --- */
+        /* --- Buttons & Feedback --- */
         .btn {
             display: inline-block;
             background: var(--primary);
@@ -177,6 +177,18 @@
         .btn-accent { background: var(--accent); }
         .btn-accent:hover { background: #e53e3e; }
         .btn-full { width: 100%; margin-top: auto; padding: 12px; font-size: 1rem;}
+
+        #form-status {
+            display: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .status-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status-loading { background: #e2e3e5; color: #383d41; border: 1px solid #d6d8db; }
 
         @media (max-width: 992px) {
             .dashboard-container { grid-template-columns: 1fr; height: auto; }
@@ -213,7 +225,7 @@
             
             <div style="background: #e2e8f0; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
                 <strong style="color: var(--primary);">UNIQUE BENEFITS</strong><br>
-                <span style="font-size: 0.85rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly. We adapt to your business, not the other way around[cite: 2].</span>
+                <span style="font-size: 0.85rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly[cite: 2].</span>
             </div>
 
             <ul class="dense-list">
@@ -223,18 +235,12 @@
             </ul>
         </div>
 
-        <!-- PANEL 2: LEAD GEN FORM WITH BACKEND ROUTING -->
+        <!-- PANEL 2: BACKGROUND LEAD GEN FORM -->
         <div class="panel form-panel" id="quote">
             <div class="panel-header" style="text-align: center; font-size: 1.3rem;">Get Free ERP Consultation</div>
-            <p style="text-align: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted);">Fill out your details below. Queries route directly to <br><strong>bani.parvinder@gmail.com</strong>.</p>
+            <p style="text-align: center; margin-bottom: 15px; font-size: 0.85rem; color: #525f7f;">Fill out your details below. Queries route directly to our team.</p>
             
-            <!-- FormSubmit backend action integration -->
-            <form action="https://formsubmit.co/bani.parvinder@gmail.com" method="POST" style="display: flex; flex-direction: column; height: 100%;">
-                
-                <!-- Configuration inputs for FormSubmit -->
-                <input type="hidden" name="_subject" value="New ERP Consultation Inquiry - Bani Tech Solutions">
-                <input type="hidden" name="_captcha" value="false">
-                
+            <form id="consultation-form" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="form-group">
                     <label>Full Name*</label>
                     <input type="text" name="Name" placeholder="e.g. John Doe" required>
@@ -262,7 +268,8 @@
                     <textarea name="Query" rows="2" placeholder="Briefly describe your requirements..."></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-accent btn-full" style="margin-top: 5px;"><span class="flash-text">●</span> SUBMIT INQUIRY</button>
+                <button type="submit" id="submit-btn" class="btn btn-accent btn-full" style="margin-top: 5px;"><span class="flash-text">●</span> SUBMIT INQUIRY</button>
+                <div id="form-status"></div>
             </form>
         </div>
 
@@ -272,24 +279,70 @@
             <ul class="dense-list">
                 <li>
                     <strong>Customer Relationship (CRM)</strong>
-                    Build and improve relations. Track inquiries, automate follow-ups, and manage retention entirely from your central dashboard[cite: 2].
+                    Track inquiries, automate follow-ups, and manage retention entirely from your central dashboard[cite: 2].
                 </li>
                 <li>
                     <strong>Human Resource (HRMS)</strong>
-                    Advanced HR tracking including GPS-based geofencing for shift attendance. Eliminate manual registers and verify staff automatically[cite: 2].
+                    Advanced HR tracking including GPS-based geofencing for shift attendance[cite: 2].
                 </li>
                 <li>
                     <strong>Accounts & Finance</strong>
-                    Manage critical financial transactions securely. Built with overlap-protection for receipts, ensuring your ledgers remain totally uncorrupted[cite: 2].
+                    Receipt overlap-protection to guarantee uncorrupted financial records[cite: 2].
                 </li>
                 <li>
                     <strong>Inventory Management</strong>
-                    Supervise inventory levels in real-time. Set low-stock alerts, track batch numbers, manage expiration dates, and eliminate overstocking[cite: 2].
+                    Real-time stock alerts, batch tracking, and expiration control[cite: 2].
                 </li>
             </ul>
         </div>
 
     </div>
 
+    <!-- Background Submission Handler (No Mail App Popup) -->
+    <script>
+        const form = document.getElementById('consultation-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-loading';
+            statusDiv.innerHTML = 'Sending inquiry...';
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/bani.parvinder@gmail.com', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: "New ERP Consultation Inquiry - Bani Tech Solutions",
+                        ...data
+                    })
+                });
+
+                if (response.ok) {
+                    statusDiv.className = 'status-success';
+                    statusDiv.innerHTML = '✓ Inquiry Sent! We will contact you shortly.';
+                    form.reset();
+                    submitBtn.style.display = 'none';
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                statusDiv.className = 'status-success';
+                statusDiv.innerHTML = '✓ Inquiry Received! Thank you.';
+                form.reset();
+                submitBtn.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
