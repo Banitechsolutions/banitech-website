@@ -123,23 +123,23 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- Form Specific Styles --- */
+        /* --- Panel 2: Form Specific Styles --- */
         .form-panel {
             border-top: 4px solid var(--accent);
             background: #fafbfc;
         }
         
-        .form-group { margin-bottom: 15px; }
+        .form-group { margin-bottom: 12px; }
         .form-group label { 
             display: block; 
-            margin-bottom: 5px; 
+            margin-bottom: 4px; 
             font-weight: bold; 
             color: var(--primary); 
             font-size: 0.85rem;
         }
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%; 
-            padding: 10px; 
+            padding: 8px 10px; 
             border: 1px solid var(--border); 
             border-radius: 4px; 
             font-size: 0.9rem;
@@ -210,11 +210,11 @@
         <div class="panel">
             <div class="panel-header">System Overview</div>
             <h1>Run Operations With Clarity, Not Chaos.</h1>
-            <p class="pitch-text">Fully customizable Cloud ERP Software designed to manage complex manufacturing, logistics, and organizational workflows in one centralized platform.</p>
+            <p class="pitch-text">Fully customizable Cloud ERP Software designed to manage complex manufacturing, logistics, and organizational workflows in one centralized platform[cite: 2].</p>
             
             <div style="background: #e2e8f0; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
                 <strong style="color: var(--primary);">UNIQUE BENEFITS</strong><br>
-                <span style="font-size: 0.85rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly. We adapt to your business, not the other way around.</span>
+                <span style="font-size: 0.85rem;">Lower operational costs, automate tasks (from invoice generation to geofenced attendance), and generate audit-ready financial reports instantly. We adapt to your business, not the other way around[cite: 2].</span>
             </div>
 
             <ul class="dense-list">
@@ -227,24 +227,25 @@
         <!-- PANEL 2: ADWORDS LEAD GEN FORM -->
         <div class="panel form-panel" id="quote">
             <div class="panel-header" style="text-align: center; font-size: 1.3rem;">Get Free ERP Consultation</div>
-            <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-muted);">Fill out your details below. Our implementation experts will contact you within 24 hours[cite: 2].</p>
+            <p style="text-align: center; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted);">Fill out your details below. Queries route directly to <br><strong>bani.parvinder@gmail.com</strong>.</p>
             
-            <form action="#" method="POST" style="display: flex; flex-direction: column; height: 100%;">
+            <!-- Connected form utilizing mailto / form action hook -->
+            <form action="mailto:bani.parvinder@gmail.com" method="POST" enctype="text/plain" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="form-group">
                     <label>Full Name*</label>
-                    <input type="text" placeholder="e.g. John Doe" required>
+                    <input type="text" name="Name" placeholder="e.g. John Doe" required>
                 </div>
                 <div class="form-group">
                     <label>Business Email*</label>
-                    <input type="email" placeholder="john@yourcompany.com" required>
+                    <input type="email" name="Email" placeholder="john@yourcompany.com" required>
                 </div>
                 <div class="form-group">
                     <label>Phone Number*</label>
-                    <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+                    <input type="tel" name="Phone" placeholder="+91 XXXXX XXXXX" required>
                 </div>
                 <div class="form-group">
                     <label>Select Industry*</label>
-                    <select required>
+                    <select name="Industry" required>
                         <option value="">Choose an option...</option>
                         <option value="Manufacturing">Manufacturing & Supply Chain</option>
                         <option value="Healthcare">Healthcare / Clinics</option>
@@ -252,10 +253,12 @@
                         <option value="NGO">NGOs / Charities</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label>Query / Requirements</label>
+                    <textarea name="Query" rows="2" placeholder="Briefly describe your requirements..."></textarea>
+                </div>
                 
-                <div style="flex-grow: 1;"></div>
-                
-                <button type="submit" class="btn btn-accent btn-full"><span class="flash-text">●</span> SUBMIT DETAILS</button>
+                <button type="submit" class="btn btn-accent btn-full" style="margin-top: 5px;"><span class="flash-text">●</span> SUBMIT INQUIRY</button>
             </form>
         </div>
 
