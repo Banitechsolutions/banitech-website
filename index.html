@@ -96,17 +96,6 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
         }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
 
         /* Hero Section with Form */
         .hero {
@@ -244,6 +233,129 @@
             color: var(--text-muted);
         }
 
+        /* --- Geofenced Attendance Interactive Slideshow Widget --- */
+        .geofence-showcase {
+            max-width: 1200px;
+            margin: 4rem auto 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .slide {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide-content h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .slide-content p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .slide-content ul {
+            list-style: disc;
+            padding-left: 20px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .slide-content li {
+            margin-bottom: 8px;
+        }
+
+        .slide-graphic {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-graphic h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .slide-graphic p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Slideshow Controls */
+        .slideshow-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #fafbfc;
+            border-top: 1px solid var(--border);
+        }
+
+        .slide-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--accent);
+        }
+
+        .slide-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .slide-btn:hover { background: #133a66; }
+
         /* Demo Section */
         .demos {
             padding: 5rem 5%;
@@ -333,6 +445,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
+            .slide.active { grid-template-columns: 1fr; }
             .demo-card { flex-direction: column; }
             .demo-image { border-left: none; border-top: 1px solid rgba(0,0,0,0.05); }
         }
@@ -406,6 +519,7 @@
         <p>Most software is built by coders who don't understand how an organization actually runs. With a deep background in operational management and finance, these systems are architected with an understanding of compliance, institutional hierarchy, and real-world logistics. We don't just store data; we protect it, validate it, and automate your administrative bottlenecks[cite: 1].</p>
     </section>
 
+    <!-- Features Section with Interactive Slideshow -->
     <section id="features" class="features">
         <h2 class="section-title">Enterprise Features, Out of the Box</h2>
         <div class="grid">
@@ -426,6 +540,95 @@
                 <p>Automated image compression saves database space, while custom, landscape-formatted printable reports ensure physical records meet auditing standards[cite: 1].</p>
             </div>
         </div>
+
+        <!-- Interactive Slideshow for Geofenced Attendance -->
+        <div class="geofence-showcase">
+            <div class="slideshow-container">
+                
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <div class="slide-content">
+                        <span class="badge" style="display:inline-block; padding:0.25rem 0.75rem; background:var(--primary); color:var(--white); border-radius:20px; font-size:0.8rem; margin-bottom:10px;">FEATURE SPOTLIGHT</span>
+                        <h3>Bani Tech Solutions: Geofenced Attendance</h3>
+                        <p>Stop manual registers. Start automated, fraud-proof attendance — from day one.</p>
+                        <ul>
+                            <li><strong>Proxy Fraud Elimination:</strong> Stops buddy-punching cold.</li>
+                            <li><strong>Save Time:</strong> Reclaims 30+ minutes of HR bandwidth daily.</li>
+                        </ul>
+                    </div>
+                    <div class="slide-graphic">
+                        <h4>Office Perimeter Tracking</h4>
+                        <p>📍 GPS verified office boundary constraints active.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <span class="badge" style="display:inline-block; padding:0.25rem 0.75rem; background:var(--accent); color:var(--white); border-radius:20px; font-size:0.8rem; margin-bottom:10px;">THE PROBLEM</span>
+                        <h3>Manual Attendance Costs You</h3>
+                        <p>Traditional paper registers drain operational efficiency silently every single month.</p>
+                        <ul>
+                            <li><strong>Proxy Fraud:</strong> Drains 5-15% of payroll consistently.</li>
+                            <li><strong>Zero Visibility:</strong> No live insight into who is on-site.</li>
+                        </ul>
+                    </div>
+                    <div class="slide-graphic">
+                        <h4>Manual Leakage</h4>
+                        <p>❌ Unverified remote check-ins & paper register gaps.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <span class="badge" style="display:inline-block; padding:0.25rem 0.75rem; background:var(--primary); color:var(--white); border-radius:20px; font-size:0.8rem; margin-bottom:10px;">HOW IT WORKS</span>
+                        <h3>Three Simple Steps</h3>
+                        <p>Zero manual effort required from your management staff.</p>
+                        <ul>
+                            <li><strong>1. Enter Perimeter:</strong> Staff cross office boundary zones.</li>
+                            <li><strong>2. Mobile App Logs:</strong> Location confirmed instantly via GPS.</li>
+                            <li><strong>3. Live Dashboard:</strong> Instant updates on your screen.</li>
+                        </ul>
+                    </div>
+                    <div class="slide-graphic">
+                        <h4>Automated Sync</h4>
+                        <p>📱 Instant mobile validation upon entry.</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <span class="badge" style="display:inline-block; padding:0.25rem 0.75rem; background:var(--primary); color:var(--white); border-radius:20px; font-size:0.8rem; margin-bottom:10px;">SECURITY & PRIVACY</span>
+                        <h3>Built for Trust by Design</h3>
+                        <p>Complete data compliance and encryption for your entire organization.</p>
+                        <ul>
+                            <li><strong>Enterprise Encryption:</strong> Secured in transit and at rest.</li>
+                            <li><strong>GDPR Aligned:</strong> Compliant with local privacy laws.</li>
+                        </ul>
+                    </div>
+                    <div class="slide-graphic">
+                        <h4>Bank-Grade Security</h4>
+                        <p>🔒 Tamper-proof audit logs for every clock-in.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slideshow Controls -->
+            <div class="slideshow-nav">
+                <button class="slide-btn" onclick="changeSlide(-1)">❮ Previous</button>
+                <div class="slide-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+                <button class="slide-btn" onclick="changeSlide(1)">Next ❯</button>
+            </div>
+        </div>
+
     </section>
 
     <section id="solutions" class="demos">
@@ -484,8 +687,41 @@
         <p style="margin-top: 3rem; font-size: 0.9rem; opacity: 0.7;">© 2026 Bani Tech Solutions. Built for secure operations.</p>
     </footer>
 
-    <!-- Background Form Handler script -->
+    <!-- Script for Slideshow & Background Form Handler -->
     <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        // Auto advance slide every 5 seconds
+        setInterval(function() {
+            changeSlide(1);
+        }, 5000);
+
+        // Background Form Handler script
         const form = document.getElementById('consultation-form');
         const statusDiv = document.getElementById('form-status');
         const submitBtn = document.getElementById('submit-btn');
